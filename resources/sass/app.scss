@@ -1,0 +1,19 @@
+// Tailwind start
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+// Tailwind end
+
+@import "typography/typography";
+
+// Variables
+@import 'config/variables';
+
+// Base
+@import 'base/forms';
+
+// Layout
+@import 'layout/structure';
+
+// Components
+@import 'components/buttons';

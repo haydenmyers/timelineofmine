@@ -1,0 +1,17 @@
+label {
+    @apply block w-full mb-1;
+}
+
+input,
+select,
+textarea {
+    @apply inline-block border border-gray-400 rounded w-full h-10 px-4;
+
+    &:focus {
+        @apply border-green-600 outline-none;
+    }
+}
+
+textarea {
+    @apply min-h-24 py-3;
+}
