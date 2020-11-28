@@ -3,6 +3,7 @@
 namespace App\QueryFiltering;
 
 use App\QueryFiltering\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 
 class EventFilters extends QueryFilter {
     protected function setDefaults() {
@@ -16,6 +17,14 @@ class EventFilters extends QueryFilter {
 
         if ($type === 'newest') {
             return $this->builder->reorder('date', 'desc');
+        }
+    }
+
+    public function categories(array $categories) {
+        if (!empty($categories)) {
+            return $this->builder->whereHas('categories', function(Builder $query) use ($categories) { 
+                return $query->whereIn('category_id', $categories); 
+            });
         }
     }
 }

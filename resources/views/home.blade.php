@@ -6,24 +6,19 @@
             <form action="{{ route('home') }}" method="GET">
                 <div class="w-full flex justify-between items-end">
                     @php
-                    // TODO: Sort by: Date desc (default), Date asc
                     // TODO: Date Range: Show a calendar where a user can pick a single month or click a "from - to" relationship
-                    // TODO: Categories: All (default), ...
                     @endphp
 
                     <div class="flex-grow flex justify-between">
                         {{-- Categories --}}
                         @if ($categories)
                             <div>
-                                <label for="filter-categories">Categories:</label>
-                                <select name="categories" id="filter-categories">
-                                    <option selected value>All Categories</option>
-                                    @foreach ($categories as $category)
-                                        @if($category->events_count)
-                                            <option value="{{ $category->id }}">{{ $category->name }} ({{ $category->events_count }})</option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                                @foreach ($categories as $category)
+                                @if($category->events_count)
+                                    <label for="filter-{{ $category->slug }}">{{ $category->name }}</label>
+                                    <input type="checkbox" name="categories[]" id="filter-{{ $category->slug }}" value="{{ $category->id }}" @if($category->inFilter()) checked @endif/>
+                                @endif
+                                @endforeach
                             </div>
                         @endif
 
@@ -37,8 +32,8 @@
                         <div>
                             <label for="filter-sort">Sort By:</label>
                             <select name="sortBy" id="filter-sort">
-                                <option value="newest">Newest</option>
-                                <option value="oldest">Oldest</option>
+                                <option value="newest" @if(Request::get('sortBy') == 'newest') selected @endif>Newest</option>
+                                <option value="oldest" @if(Request::get('sortBy') == 'oldest') selected @endif>Oldest</option>
                             </select>
                         </div>
                     </div>

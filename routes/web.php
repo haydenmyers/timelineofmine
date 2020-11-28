@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
     // Home
-    Route::match(['get', 'post'], '/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Account
     Route::get('/account/{user}', [AccountController::class, 'show'])->name('account')->middleware('can:view-page,user');
