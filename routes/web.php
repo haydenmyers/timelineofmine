@@ -38,7 +38,6 @@ Route::middleware(['auth'])->group(function() {
     // Categories
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('createCategory');
-    Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category'); // TODO: Potentially remove this and use query parameters to display events under a certain category
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('storeCategory');
 
     // Viewing media
