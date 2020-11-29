@@ -32,7 +32,7 @@
                     </div>
                     <h3 class="w-1/5 text-center">{{ $category->name }}</h3>
                     <span class="w-1/4 text-center">
-                        <a href="#" class="text-center text-blue-500 hover:underline hover:text-blue-800">{{ $category->events_count }}</a>
+                        <a href="{{ $category->path() }}" class="text-center text-blue-500 hover:underline hover:text-blue-800">{{ $category->events_count }}</a>
                     </span>
                     <span class="w-1/4 text-center">
                         @php

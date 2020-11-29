@@ -12,4 +12,12 @@ trait Filterable {
             break;
         }
     }
+
+    public function filterName() {
+        switch(strtolower(class_basename($this))) {
+            case 'category':
+                return 'categories[]';
+            break;
+        }
+    }
 }

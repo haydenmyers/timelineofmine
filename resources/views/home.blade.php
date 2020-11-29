@@ -16,7 +16,7 @@
                                 @foreach ($categories as $category)
                                 @if($category->events_count)
                                     <label for="filter-{{ $category->slug }}">{{ $category->name }}</label>
-                                    <input type="checkbox" name="categories[]" id="filter-{{ $category->slug }}" value="{{ $category->id }}" @if($category->inFilter()) checked @endif/>
+                                    <input type="checkbox" name="{{ $category->filterName() }}" id="filter-{{ $category->slug }}" value="{{ $category->id }}" @if($category->inFilter()) checked @endif/>
                                 @endif
                                 @endforeach
                             </div>

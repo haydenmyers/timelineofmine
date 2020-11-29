@@ -25,6 +25,6 @@ class Category extends Model
 
     public function path() {
         // TODO: Improve this code. Feels a bit hacky. How can I provide a way of getting the current home url and appending this in the query string.
-        return route('home') . '?' . urlencode('categories[]') . '=' . $this->id;
+        return route('home') . '?' . urlencode($this->filterName()) . '=' . $this->id;
     }
 }
