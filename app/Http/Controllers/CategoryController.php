@@ -6,7 +6,6 @@ use App\Models\Icon;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -27,11 +26,7 @@ class CategoryController extends Controller
     }
 
     public function store() {
-        $attributes = request()->validate([
-            'name' => ['required', 'max:255'],
-            'color' => ['nullable', 'max:50'],
-            'icon' => ['image']
-        ]);
+        $attributes = $this->validateCategoryFields();
         $attributes['user_id'] = current_user()->id;
         $attributes['slug'] = Str::slug($attributes['name'], '-');
         $attributes['editable'] = true;
@@ -48,5 +43,24 @@ class CategoryController extends Controller
         Category::create($attributes);
 
         return redirect(route('categories'));
+    }
+
+    public function edit(Category $category) {
+        return view('category.edit', compact('category'));
+    }
+
+    public function update(Category $category) {
+        $attributes = $this->validateCategoryFields();
+        $category->update($attributes);
+
+        return redirect(route('categories'));
+    }
+
+    public function validateCategoryFields() {
+        return request()->validate([
+            'name' => ['required', 'max:255'],
+            'color' => ['nullable', 'max:50'],
+            'icon' => ['image']
+        ]);
     }
 }

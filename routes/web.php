@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('createCategory');
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('storeCategory');
+    Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('editCategory');
+    Route::put('/categories/update/{category}', [CategoryController::class, 'update'])->name('updateCategory');
 
     // Viewing media
     // TODO: Need to add authorisation for viewing media that only the logged in user has uploaded

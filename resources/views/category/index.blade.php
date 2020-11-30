@@ -41,7 +41,7 @@
                         <a href="#" class="text-center text-blue-500 hover:underline hover:text-blue-800">number here</a>
                     </span>
                     @if($category->editable)
-                        <a href="#" class="ml-auto mr-4 text-green-600 hover:underline hover:text-green-800">Edit</a>
+                        <a href="{{ route('editCategory', $category) }}" class="ml-auto mr-4 text-green-600 hover:underline hover:text-green-800">Edit</a>
                         <a href="#" class="ml-auto text-red-600 hover:underline hover:text-red-800">Delete</a>
                     @endif
                 </div>

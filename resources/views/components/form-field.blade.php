@@ -18,7 +18,7 @@
             </select>
             @break
         @default
-            <input type="{{ $type ?? 'text' }}" name="{{ $name ?? '' }}" id="{{ $uid }}" @if($name && old($name)) value="{{ old($name) }}" @endif>
+            <input type="{{ $type ?? 'text' }}" name="{{ $name ?? '' }}" id="{{ $uid }}" @if($name && old($name)) value="{{ old($name) }}" @elseif(isset($value) && $value) value="{{ $value }}" @endif>
     @endswitch
 
     @error($name)
